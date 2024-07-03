@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB = "${POSTGRESQLDB_NAME}"
+      - POSTGRES_USER =  "${POSTGRESQLDB_USER}"
+      - POSTGRES_PASSWORD = "${POSTGRESQLDB_PASSWORD}" 
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+
+  app:
+    image: my-node-app
+    ports:
+      - "13000:3000"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL= "${PGADMIN_EMAIL}"
+      - PGADMIN_DEFAULT_PASSWORD=  "${PGADMIN_PASSWORD}"
+    ports:
+      - 5050:80
+
+    
