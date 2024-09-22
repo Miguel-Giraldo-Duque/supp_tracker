@@ -1,8 +1,11 @@
 import React from 'react'
 import { Navbar } from './navbar'
 import { Link } from 'react-router-dom'
+import { DataContext } from './dataContext'
+import { useContext } from 'react'
 
 export const Progess = () => {
+  const { listTrackers, setList} = useContext(DataContext)
   return (
     <div className='home'>
         <Navbar></Navbar>
@@ -11,22 +14,16 @@ export const Progess = () => {
             <h2>como vas con tus metas</h2>
           </div>
         <div className='listTracks'>
-            <div className='listTracks_elment progress'> 
-                <Link to={"/home"} className={"link-styles"}> Fuchi </Link>    
+              {
+           listTrackers.map((tracker) =>{
+            return(
+            <div className='listTracks_elment' key={Math.random() * 100}> 
+                <Link to="/track" className={"link-styles"}>{tracker.nametracker}</Link>
             </div>
-            <div className='listTracks_elment progress' > 
-                <Link to={"/home"} className={"link-styles"}> Seducciopn </Link>    
-            </div>
-            <div className='listTracks_elment  progress'> 
-                <Link to={"/home"} className={"link-styles"}> Calistenia </Link>    
-            </div>
-            <div className='listTracks_elment  progress'> 
-                <Link to={"/home"} className={"link-styles"}> Lectura </Link>    
-            </div>
-            <div className='listTracks_elment  progress'> 
-                <Link to={"/home"} className={"link-styles"}> Poesia </Link>    
-            </div>
-          </div>
+            )
+          })
+          }
+        </div>
     </div>
   )
 }

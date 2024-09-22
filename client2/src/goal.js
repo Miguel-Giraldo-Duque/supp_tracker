@@ -1,8 +1,8 @@
 import React from 'react'
 import { useContext } from 'react'
 import { DataContext } from './dataContext'
-export const Goal = ({children , inputNombreMeta, inputValorMeta}) => {
-  const { metas, setMetas} = useContext(DataContext)
+export const Goal = ({children , inputGoalname, inputValue}) => {
+  const { goals, setGoal} = useContext(DataContext)
     function close_modal() {
         let modal= document.getElementById("btn-close")
         modal.style.display = "none"
@@ -12,7 +12,7 @@ export const Goal = ({children , inputNombreMeta, inputValorMeta}) => {
       let modal= document.getElementById("btn-close")
       modal.style.display = "none"
 
-      setMetas(prevGoals => [...prevGoals, {goalname: inputNombreMeta, valorAlcanzar: inputValorMeta }])
+      setGoal(prevGoals => [...prevGoals, {goalname: inputGoalname, valuetoachieve: inputValue  }])
   }
 
 

@@ -17,7 +17,7 @@ export const Navbar = () => {
        <div className={`conteinerNav_elements ${isOpen ? "is-open": ""} `} >
 
             <li>
-               <Link to={"/home"} className={"link-styles"}> Inicio </Link>    
+               <Link to={"/"} className={"link-styles"}> Inicio </Link>    
             </li>
             {/* <li>
                <Link to={"/progress"} className={"link-styles"}> Objetivos </Link>    

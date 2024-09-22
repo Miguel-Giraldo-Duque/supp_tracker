@@ -25,7 +25,7 @@ export const Newtracker = () => {
         <h1>Define tu Tracker</h1>
         <h2>A donde llegar con este tracker</h2>
 
-        <div className='contenedor'>
+        <div className='conteiner'>
      
         <div className='conteinedor_metrica contenedor_metrica--NewTracker'> 
              <h4>Nombre del tracker</h4>

@@ -139,7 +139,7 @@
 }
 
 
-.contenedor{
+.conteiner{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -304,6 +304,7 @@
 
 .listTracks_elment--create{
   width: 160px;
+  cursor: pointer;
   height: 50px;
   font-size: 20px;
   margin-top: 20px;
@@ -323,3 +324,19 @@
   background-color: #141514;
   text-align: center;
 }
+
+.newExercise{
+  align-items: center;
+}
+
+
+/*Login*/
+
+.login input{
+    margin-top: 20px;
+}
+
+.login p {
+  opacity: 0.9;
+  margin-top: 100px;
+} 

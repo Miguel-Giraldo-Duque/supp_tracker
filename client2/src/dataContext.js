@@ -5,14 +5,15 @@ export const DataContext = createContext();
 
 // Crea un proveedor para el contexto
 export const DataProvider = ({ children }) => {
-  const [metas, setMetas] = useState([]);
+  const [goals, setGoal] = useState([]);
   const [tracker, setTracker] = useState({
     nombreTracker: "",
     objetivo: "",
-    metas: [],
+    goals: [],
   });
+  const [listTrackers, setList]= useState([])
   return (
-    <DataContext.Provider value={{metas, setMetas, tracker, setTracker}}>
+    <DataContext.Provider value={{goals, setGoal, tracker, setTracker,listTrackers, setList}}>
       {children}
     </DataContext.Provider>
   );

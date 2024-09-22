@@ -1,0 +1,19 @@
+FROM node:18
+
+# Crear y cambiar a directorio de trabajo
+WORKDIR /usr/src/app
+
+# Copiar archivos package.json y package-lock.json
+COPY package*.json ./
+
+# Instalar dependencias
+RUN npm install
+
+# Copiar el resto de los archivos de la aplicación
+COPY . .
+
+# Exponer el puerto en el que la API estará escuchando (asume puerto 3000)
+EXPOSE 3000
+
+# Comando por defecto para iniciar la API
+CMD ["npm", "start"]

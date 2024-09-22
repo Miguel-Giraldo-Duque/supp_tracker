@@ -1,7 +1,25 @@
 import { Navbar } from './navbar.js';
 import { Link } from 'react-router-dom';
-
+import axios from 'axios';
+import { useContext , useEffect } from 'react';
+import { DataContext } from './dataContext.js';
 export function Home() {
+  const { listTrackers, setList} = useContext(DataContext)
+
+  useEffect(() =>{
+    const request = async () =>{
+      try {
+        let data = await axios.get("http://localhost:3002/trackers")
+        setList(data.data.rows)  
+      } catch (error) {
+        throw error
+      }
+      
+    }
+
+    request()
+  },[setList])
+  console.log(listTrackers)
   return (
       <div className='home'>
         <Navbar></Navbar>
@@ -10,24 +28,19 @@ export function Home() {
             <h2>Que vas a trackear hoy</h2>
           </div>
           <div className='listTracks'>
-            <div className='listTracks_elment'> 
-              <Link to="/track" className={"link-styles"}>Fuchi</Link>
-            </div>
-            <div className='listTracks_elment'> 
-              <Link to="/track" className={"link-styles"}>Calistenia</Link>
-            </div>
-            <div className='listTracks_elment'> 
-              <Link to="/track" className={"link-styles"}>Seducciopn</Link>
-            </div>
-            <div className='listTracks_elment'> 
-              <Link to="/track" className={"link-styles"}>Lectura</Link>
-            </div>
-            <div className='listTracks_elment'> 
-              <Link to="/track" className={"link-styles"}>Poesia</Link>
-            </div>
-            <button className='listTracks_elment--addMore'> 
+          {
+                listTrackers.map((tracker) =>{
+                  return(
+                  <div className='listTracks_elment' key={tracker.id_tracker}> 
+                      <Link to={`/track/${tracker.id_tracker}`} className={"link-styles"}>{tracker.nametracker}</Link>
+                  </div>
+                  )
+                })
+          }
+          <button className='listTracks_elment--addMore'> 
               <Link to="/newTracker"  className={"link-styles--addmore"}>+</Link>
-            </button>
+          </button>
+           
           </div>
     </div>
   );
